@@ -2,11 +2,15 @@
   "type": "project",
   "license": "proprietary",
   "require": {
-    "php": "7.4.*"
+    "php": "7.4.*",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {
       "Lpp\\": "src/Lpp"
     }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^5.1"
   }
 }
