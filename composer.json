@@ -1,1 +1,12 @@
-If you would like to use me, please put proper json data here.
+{
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": "7.3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lpp\\": "src/Lpp"
+    }
+  }
+}
