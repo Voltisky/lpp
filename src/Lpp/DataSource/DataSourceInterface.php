@@ -7,6 +7,8 @@ namespace Lpp\DataSource;
 interface DataSourceInterface
 {
     /**
+     * Find Item by Id
+     *
      * @param int $id
      * @return array|object
      */

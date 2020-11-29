@@ -38,6 +38,12 @@ class JsonFilesystemDataSource implements DataSourceInterface
         }
     }
 
+    /**
+     * Get File Path for Source Item
+     *
+     * @param int $id
+     * @return string
+     */
     private function getItemPath(int $id)
     {
         return sprintf("%s/%s.json", $this->getDataDirectory(), $id);

@@ -5,6 +5,7 @@ namespace Lpp\DataMapper;
 
 
 use Lpp\Entity\Item;
+use Lpp\Exception\NormalizerClassNotFoundException;
 use Lpp\Model\ItemModel;
 use Lpp\Normalizer\ObjectNormalizer;
 
@@ -20,6 +21,13 @@ class ItemMapper implements DataMapperInterface
         $this->priceMapper = new PriceMapper();
     }
 
+    /**
+     * Extract data from ItemModel to Item Entity
+     *
+     * @param array $data
+     * @return Item|object
+     * @throws NormalizerClassNotFoundException
+     */
     public function extract(array $data)
     {
         /** @var ItemModel $itemModel */

@@ -7,6 +7,7 @@ namespace Lpp\Service\Storage;
 use Lpp\DataMapper\BrandMapper;
 use Lpp\DataSource\DataSourceInterface;
 use Lpp\Entity\Brand;
+use Lpp\Exception\NormalizerClassNotFoundException;
 use Lpp\Model\Collection;
 use Lpp\Normalizer\ObjectNormalizer;
 
@@ -36,9 +37,12 @@ class ItemService implements ItemServiceInterface
     }
 
     /**
+     * Map data from Collection instance to collection of Brand
+     *
      * @param Collection $collection
      *
      * @return Brand[]
+     * @throws NormalizerClassNotFoundException
      */
     private function getBrandsFromCollection(Collection $collection)
     {

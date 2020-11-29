@@ -9,6 +9,7 @@ use DateTimeInterface;
 use Exception;
 use Lpp\Exception\NormalizerClassNotFoundException;
 use ReflectionClass;
+use ReflectionException;
 
 class ObjectNormalizer implements NormalizerInterface
 {
@@ -26,6 +27,14 @@ class ObjectNormalizer implements NormalizerInterface
         return $this->assignProperties($instance, $data);
     }
 
+    /**
+     * Map data from array to the instance.
+     * Handle extracting data of DateTime and create instance
+     *
+     * @param object $instance
+     * @param array $data
+     * @return object
+     */
     private function assignProperties(object $instance, array $data)
     {
         foreach ($data as $dataFieldOrIndex => $dataValue) {
@@ -39,6 +48,15 @@ class ObjectNormalizer implements NormalizerInterface
         return $instance;
     }
 
+    /**
+     * Prepare for value for instance field
+     *
+     * @param object $instance
+     * @param $fieldNameOrIndex
+     * @param $fieldValue
+     * @return DateTime
+     * @throws Exception
+     */
     private function prepareInstanceValue(object $instance, $fieldNameOrIndex, $fieldValue)
     {
         $returnValue = $fieldValue;
@@ -49,6 +67,14 @@ class ObjectNormalizer implements NormalizerInterface
         return $returnValue;
     }
 
+    /**
+     * Get type of instance field, handled by Reflections
+     *
+     * @param object $instance
+     * @param string $fieldName
+     * @return string
+     * @throws ReflectionException
+     */
     private function getInstanceFieldType(object $instance, string $fieldName): string
     {
         $reflectionClass = new ReflectionClass(get_class($instance));
@@ -58,11 +84,13 @@ class ObjectNormalizer implements NormalizerInterface
     }
 
     /**
+     * Create instance of DateTime fo passed string data
+     *
      * @param $fieldValue
      * @return DateTime
      * @throws Exception
      */
-    private function getDataValueDateTime($fieldValue)
+    private function getDataValueDateTime(string $fieldValue)
     {
         return new DateTime($fieldValue);
     }

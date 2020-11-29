@@ -5,6 +5,7 @@ namespace Lpp\DataMapper;
 
 
 use Lpp\Entity\Brand;
+use Lpp\Exception\NormalizerClassNotFoundException;
 use Lpp\Model\BrandModel;
 use Lpp\Normalizer\ObjectNormalizer;
 
@@ -20,6 +21,13 @@ class BrandMapper implements DataMapperInterface
         $this->itemMapper = new ItemMapper();
     }
 
+    /**
+     * Extract data from BrandModel to Brand Entity
+     *
+     * @param array $data
+     * @return Brand|object
+     * @throws NormalizerClassNotFoundException
+     */
     public function extract(array $data)
     {
         /** @var BrandModel $brandModel */

@@ -17,6 +17,8 @@ class Filesystem
     }
 
     /**
+     * Get file content from passed file path
+     *
      * @param string $filePath
      * @return SplFileInfo|null
      * @throws FilesystemFileNotFoundException
@@ -30,11 +32,22 @@ class Filesystem
         return file_get_contents($filePath);
     }
 
+    /**
+     * Check is file existing in local storage
+     *
+     * @param string $filePath
+     * @return bool
+     */
     public function fileExists(string $filePath): bool
     {
         return file_exists($filePath);
     }
 
+    /**
+     * Get project root directory
+     *
+     * @return string
+     */
     public function getRootDir(): string
     {
         return $this->rootDir;
