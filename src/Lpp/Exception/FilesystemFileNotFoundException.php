@@ -4,7 +4,9 @@
 namespace Lpp\Exception;
 
 
-class FilesystemFileNotFoundException
+use Exception;
+
+class FilesystemFileNotFoundException extends Exception
 {
 
 }
