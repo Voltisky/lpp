@@ -1,12 +1,14 @@
 <?php
 
+
 namespace Lpp\Service;
+
 
 use InvalidArgumentException;
 use Lpp\Entity\Brand;
 use Lpp\Service\Storage\ItemServiceInterface;
 
-class UnorderedBrandService implements BrandServiceInterface
+class NameOrderedBrandService implements BrandServiceInterface
 {
     private ItemServiceInterface $itemService;
 
@@ -39,7 +41,12 @@ class UnorderedBrandService implements BrandServiceInterface
 
         $collectionId = $this->collectionNameToIdMapping[$collectionName];
 
-        return $this->itemService->getResultForCollectionId($collectionId);
+        $brands = $this->itemService->getResultForCollectionId($collectionId);
+        usort($brands, function(Brand $brandA, Brand $brandB) {
+            return strcmp($brandA->getBrand(), $brandB->getBrand());
+        });
+
+        return $brands;
     }
 
     /**

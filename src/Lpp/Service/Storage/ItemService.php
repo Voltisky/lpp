@@ -25,6 +25,7 @@ class ItemService implements ItemServiceInterface
 
     /**
      * @inheritDoc
+     * @throws NormalizerClassNotFoundException
      */
     public function getResultForCollectionId(int $collectionId): array
     {
