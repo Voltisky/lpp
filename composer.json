@@ -3,14 +3,22 @@
   "license": "proprietary",
   "require": {
     "php": "7.4.*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-dom": "*",
+    "ext-mbstring": "*"
   },
   "autoload": {
     "psr-4": {
       "Lpp\\": "src/Lpp"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Lpp\\Test\\": "test/"
+    }
+  },
   "require-dev": {
-    "symfony/var-dumper": "^5.1"
+    "symfony/var-dumper": "^5.1",
+    "phpunit/phpunit": "^9"
   }
 }
