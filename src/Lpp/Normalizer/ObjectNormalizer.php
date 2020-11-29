@@ -49,6 +49,14 @@ class ObjectNormalizer implements NormalizerInterface
         return $returnValue;
     }
 
+    private function getInstanceFieldType(object $instance, string $fieldName): string
+    {
+        $reflectionClass = new ReflectionClass(get_class($instance));
+        $reflectionMethod = $reflectionClass->getMethod("get" . ucfirst($fieldName));
+
+        return (string)$reflectionMethod->getReturnType();
+    }
+
     /**
      * @param $fieldValue
      * @return DateTime
@@ -57,13 +65,5 @@ class ObjectNormalizer implements NormalizerInterface
     private function getDataValueDateTime($fieldValue)
     {
         return new DateTime($fieldValue);
-    }
-
-    private function getInstanceFieldType(object $instance, string $fieldName): string
-    {
-        $reflectionClass = new ReflectionClass(get_class($instance));
-        $reflectionMethod = $reflectionClass->getMethod("get" . ucfirst($fieldName));
-
-        return (string)$reflectionMethod->getReturnType();
     }
 }

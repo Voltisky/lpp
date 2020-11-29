@@ -13,7 +13,7 @@ class Filesystem
 
     public function __construct()
     {
-        $this->rootDir = __DIR__."/../../..";
+        $this->rootDir = __DIR__ . "/../../..";
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 namespace Lpp\Service;
 
 use InvalidArgumentException;
@@ -12,14 +13,15 @@ class UnorderedBrandService implements BrandServiceInterface
      * Maps from collection name to the id for the item service.
      */
     private array $collectionNameToIdMapping = [
-            "winter" => 1314575
-        ];
+        "winter" => 1314575
+    ];
 
     /**
      * @param ItemServiceInterface $itemService
      */
-    public function __construct(ItemServiceInterface $itemService) {
-       $this->itemService = $itemService;
+    public function __construct(ItemServiceInterface $itemService)
+    {
+        $this->itemService = $itemService;
     }
 
     /**
@@ -27,7 +29,8 @@ class UnorderedBrandService implements BrandServiceInterface
      *
      * @return Brand[]
      */
-    public function getBrandsForCollection(string $collectionName) {
+    public function getBrandsForCollection(string $collectionName)
+    {
         if (empty($this->collectionNameToIdMapping[$collectionName])) {
             throw new InvalidArgumentException(sprintf('Provided collection name [%s] is not mapped.', $collectionName));
         }
@@ -45,7 +48,8 @@ class UnorderedBrandService implements BrandServiceInterface
      *
      * @return void
      */
-    public function setItemService(ItemServiceInterface $itemService): void {
+    public function setItemService(ItemServiceInterface $itemService): void
+    {
         $this->itemService = $itemService;
     }
 
