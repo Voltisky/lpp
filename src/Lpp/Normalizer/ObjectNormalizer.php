@@ -10,7 +10,7 @@ use Exception;
 use Lpp\Exception\NormalizerClassNotFoundException;
 use ReflectionClass;
 
-class JsonNormalizer implements NormalizerInterface
+class ObjectNormalizer implements NormalizerInterface
 {
     /**
      * @inheritDoc
@@ -29,19 +29,12 @@ class JsonNormalizer implements NormalizerInterface
     private function assignProperties(object $instance, array $data)
     {
         foreach ($data as $dataFieldOrIndex => $dataValue) {
-//            if(is_numeric($dataFieldOrIndex)) {
-//
-//            }
-
             $prepareDataValue = $this->prepareInstanceValue($instance, $dataFieldOrIndex, $dataValue);
             $setterMethodName = sprintf("set%s", ucfirst($dataFieldOrIndex));
             if (method_exists($instance, $setterMethodName)) {
                 $instance->$setterMethodName($prepareDataValue);
             }
         }
-
-        dump($instance);
-        exit;
     }
 
     private function prepareInstanceValue(object $instance, $fieldNameOrIndex, $fieldValue)

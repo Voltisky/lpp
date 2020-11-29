@@ -4,7 +4,9 @@
 namespace Lpp\Exception;
 
 
-class NormalizerClassNotFoundException
+use Exception;
+
+class NormalizerClassNotFoundException extends Exception
 {
 
 }

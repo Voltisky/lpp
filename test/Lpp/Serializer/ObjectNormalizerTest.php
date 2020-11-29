@@ -9,7 +9,7 @@ use Lpp\Exception\NormalizerClassNotFoundException;
 use Lpp\Normalizer\ObjectNormalizer;
 use PHPUnit\Framework\TestCase;
 
-class JsonNormalizerTest extends TestCase
+class ObjectNormalizerTest extends TestCase
 {
     private ObjectNormalizer $normalizer;
 
