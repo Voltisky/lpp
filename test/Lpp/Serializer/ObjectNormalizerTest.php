@@ -13,12 +13,6 @@ class ObjectNormalizerTest extends TestCase
 {
     private ObjectNormalizer $normalizer;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->normalizer = new ObjectNormalizer();
-    }
-
     public function testDenormalizeItemClass()
     {
 //        $this->expectException(NormalizerClassNotFoundException::class);
@@ -40,5 +34,11 @@ class ObjectNormalizerTest extends TestCase
     {
         $this->expectException(NormalizerClassNotFoundException::class);
         $this->normalizer->denormalize([], "NotExistingClassName");
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->normalizer = new ObjectNormalizer();
     }
 }

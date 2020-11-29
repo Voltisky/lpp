@@ -31,6 +31,7 @@ class JsonSerializerTest extends TestCase
     {
         $result = $this->serializer->deserialize("{}", Item::class);
 
-        var_dump($result);exit;
+        var_dump($result);
+        exit;
     }
 }
