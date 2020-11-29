@@ -1,3 +1,37 @@
+# Task Result
+
+## Started
+
+* If you want to run task result, try with composer install, composer should inform about missing extension / PHP version
+* I've used PHP 7.4
+* Prepared autoload from composer instead of src/Lpp/SplClassLoader.php
+* Started from code cleanup, change encapsulation
+* Using composer, added VarDumper (symfony/var-dumper) for better debugging variables
+
+## First Task
+
+* I've implemented Filesystem class for working with data/ directory
+* Added implementation of Serializer and Normalizer for better working with data
+* Normalizer got additional feature with parsing DateTime and assign to variable
+* I've added DataMapper for issue with wrong field naming which maps object instance of src/Lpp/Model to dedicated entities
+
+## Second Task
+
+* First I've added src/Lpp/Validator/Validator class
+* After read again task added src/Lpp/Validator/ObjectValidator class which accept ValidableInterface instances
+* ValidableInterface require getValidationRules() which contains list of fields to be validated (use to extend)
+
+## Third Task
+
+* I've add src/Lpp/Service/NameOrderedBrandService which is ordering Brands by their name
+* I'm not sure is it okay, today is Sunday so it's hard to ask. In normal work I should ask for details
+
+## Tests
+
+* Added some tests, stored in test/ directory
+* If you want to run tests, call in CLI "./vendor/bin/phpunit test/"
+
+
 # Info
 
 You need at least:
