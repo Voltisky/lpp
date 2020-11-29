@@ -8,6 +8,8 @@
 * Started from code cleanup, change encapsulation
 * Using composer, added VarDumper (symfony/var-dumper) for better debugging variables
 * You can test starting index.php file, run "php index.php". index.php is our FrontController
+* Result code isn't fully tested, but handled the most important places
+
 
 ## First Task
 
