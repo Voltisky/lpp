@@ -2,10 +2,13 @@
 
 namespace Lpp\Entity;
 
+use Lpp\Constraint\UrlConstraint;
+use Lpp\Validator\ValidableInterface;
+
 /**
  * Represents a single item from a search result.
  */
-class Item
+class Item implements ValidableInterface
 {
     /**
      * Name of the item
@@ -74,5 +77,15 @@ class Item
     {
         $this->prices = $prices;
         return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRules(): array
+    {
+        return [
+            "url" => [new UrlConstraint()]
+        ];
     }
 }

@@ -9,6 +9,7 @@ use Lpp\Entity\Item;
 use Lpp\Exception\NormalizerClassNotFoundException;
 use Lpp\Model\ItemModel;
 use Lpp\Normalizer\ObjectNormalizer;
+use Lpp\Validator\ObjectValidator;
 use Lpp\Validator\Validator;
 
 class ItemMapper implements DataMapperInterface
@@ -16,12 +17,14 @@ class ItemMapper implements DataMapperInterface
     private ObjectNormalizer $normalizer;
     private PriceMapper $priceMapper;
     private Validator $validator;
+    private ObjectValidator $objectValidator;
 
     public function __construct()
     {
         $this->normalizer = new ObjectNormalizer();
         $this->priceMapper = new PriceMapper();
         $this->validator = new Validator();
+        $this->objectValidator = new ObjectValidator();
     }
 
     /**
@@ -33,6 +36,7 @@ class ItemMapper implements DataMapperInterface
      */
     public function extract(array $data)
     {
+        // First (old) implementation of Validator
         $errors = $this->validator->validate($data, [
             "url" => [new UrlConstraint()]
         ]);
@@ -53,6 +57,13 @@ class ItemMapper implements DataMapperInterface
         }
 
         $item->setPrices($prices);
+
+        // Second (new) implementation of Validator dedicated for Object Validation
+        $errors = $this->objectValidator->validateObject($item);
+        if (!empty($errors)) {
+            return null;
+        }
+
         return $item;
     }
 }
