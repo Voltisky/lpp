@@ -59,7 +59,7 @@ class Item
     }
 
     /**
-     * @return array
+     * @return Price[]
      */
     public function getPrices(): array
     {
@@ -67,7 +67,7 @@ class Item
     }
 
     /**
-     * @param array $prices
+     * @param Price[] $prices
      * @return Item
      */
     public function setPrices(array $prices): Item

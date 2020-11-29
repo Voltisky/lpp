@@ -5,25 +5,37 @@ namespace Lpp\DataSource;
 
 
 use Lpp\Exception\FilesystemFileNotFoundException;
+use Lpp\Exception\SerializerWrongFormatException;
 use Lpp\Filesystem\Filesystem;
+use Lpp\Serializer\JsonSerializer;
 
 class JsonFilesystemDataSource implements DataSourceInterface
 {
     private Filesystem $filesystem;
 
+    private JsonSerializer $serializer;
+
     public function __construct()
     {
         $this->filesystem = new Filesystem();
+        $this->serializer = new JsonSerializer();
     }
 
     /**
      * @inheritDoc
-     * @throws FilesystemFileNotFoundException
      */
     public function findById(int $id)
     {
         $itemPath = $this->getItemPath($id);
-        return $this->filesystem->getFile($itemPath);
+        try {
+            $fileContent = $this->filesystem->getFileContent($itemPath);
+
+            return $this->serializer->deserialize($fileContent);
+        } catch (FilesystemFileNotFoundException $e) {
+            return null;
+        } catch (SerializerWrongFormatException $e) {
+            return null;
+        }
     }
 
     private function getItemPath(int $id)

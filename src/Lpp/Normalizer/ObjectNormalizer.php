@@ -35,6 +35,8 @@ class ObjectNormalizer implements NormalizerInterface
                 $instance->$setterMethodName($prepareDataValue);
             }
         }
+
+        return $instance;
     }
 
     private function prepareInstanceValue(object $instance, $fieldNameOrIndex, $fieldValue)

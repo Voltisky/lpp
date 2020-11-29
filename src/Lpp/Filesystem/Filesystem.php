@@ -13,7 +13,7 @@ class Filesystem
 
     public function __construct()
     {
-        $this->rootDir = realpath("../../../");
+        $this->rootDir = __DIR__."/../../..";
     }
 
     /**
@@ -21,13 +21,13 @@ class Filesystem
      * @return SplFileInfo|null
      * @throws FilesystemFileNotFoundException
      */
-    public function getFile(string $filePath): ?SplFileInfo
+    public function getFileContent(string $filePath): string
     {
         if (!$this->fileExists($filePath)) {
             throw new FilesystemFileNotFoundException();
         }
 
-        return new SplFileInfo($filePath);
+        return file_get_contents($filePath);
     }
 
     public function fileExists(string $filePath): bool

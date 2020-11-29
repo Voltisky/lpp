@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lpp\Entity;
+namespace Lpp\Model;
 
 
 class Collection

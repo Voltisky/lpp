@@ -1,6 +1,6 @@
 <?php
 
-namespace Lpp\Service;
+namespace Lpp\Service\Storage;
 
 use Lpp\Entity\Brand;
 
