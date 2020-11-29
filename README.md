@@ -1,6 +1,6 @@
 # Task Result
 
-## Started
+## Basic informations
 
 * If you want to run task result, try with composer install, composer should inform about missing extension / PHP version
 * I've used PHP 7.4
