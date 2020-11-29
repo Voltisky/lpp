@@ -4,6 +4,7 @@ namespace Lpp\Service;
 
 use InvalidArgumentException;
 use Lpp\Entity\Brand;
+use Lpp\Service\Storage\ItemServiceInterface;
 
 class UnorderedBrandService implements BrandServiceInterface
 {
@@ -13,7 +14,7 @@ class UnorderedBrandService implements BrandServiceInterface
      * Maps from collection name to the id for the item service.
      */
     private array $collectionNameToIdMapping = [
-        "winter" => 1314575
+        "winter" => 1315475
     ];
 
     /**
@@ -36,7 +37,8 @@ class UnorderedBrandService implements BrandServiceInterface
         }
 
         $collectionId = $this->collectionNameToIdMapping[$collectionName];
-        $itemResults = $this->itemService->getResultForCollectionId($collectionId);
+
+        return $this->itemService->getResultForCollectionId($collectionId);
     }
 
 

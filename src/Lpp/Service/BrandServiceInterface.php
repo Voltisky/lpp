@@ -3,6 +3,7 @@
 namespace Lpp\Service;
 
 use Lpp\Entity\Item;
+use Lpp\Service\Storage\ItemServiceInterface;
 
 /**
  * The implementation is responsible for resolving the id of the collection from the
