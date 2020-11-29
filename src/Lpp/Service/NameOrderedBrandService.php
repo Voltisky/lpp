@@ -17,7 +17,7 @@ class NameOrderedBrandService implements BrandServiceInterface
      */
     private array $collectionNameToIdMapping = [
         "winter" => 1315475,
-        "summer"=> 1315476
+        "summer" => 1315476
     ];
 
     /**
@@ -26,27 +26,6 @@ class NameOrderedBrandService implements BrandServiceInterface
     public function __construct(ItemServiceInterface $itemService)
     {
         $this->itemService = $itemService;
-    }
-
-    /**
-     * @param string $collectionName Name of the collection to search for.
-     *
-     * @return Brand[]
-     */
-    public function getBrandsForCollection(string $collectionName)
-    {
-        if (empty($this->collectionNameToIdMapping[$collectionName])) {
-            throw new InvalidArgumentException(sprintf('Provided collection name [%s] is not mapped.', $collectionName));
-        }
-
-        $collectionId = $this->collectionNameToIdMapping[$collectionName];
-
-        $brands = $this->itemService->getResultForCollectionId($collectionId);
-        usort($brands, function(Brand $brandA, Brand $brandB) {
-            return strcmp($brandA->getBrand(), $brandB->getBrand());
-        });
-
-        return $brands;
     }
 
     /**
@@ -72,5 +51,26 @@ class NameOrderedBrandService implements BrandServiceInterface
         }
 
         return $items;
+    }
+
+    /**
+     * @param string $collectionName Name of the collection to search for.
+     *
+     * @return Brand[]
+     */
+    public function getBrandsForCollection(string $collectionName)
+    {
+        if (empty($this->collectionNameToIdMapping[$collectionName])) {
+            throw new InvalidArgumentException(sprintf('Provided collection name [%s] is not mapped.', $collectionName));
+        }
+
+        $collectionId = $this->collectionNameToIdMapping[$collectionName];
+
+        $brands = $this->itemService->getResultForCollectionId($collectionId);
+        usort($brands, function (Brand $brandA, Brand $brandB) {
+            return strcmp($brandA->getBrand(), $brandB->getBrand());
+        });
+
+        return $brands;
     }
 }

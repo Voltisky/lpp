@@ -2,7 +2,6 @@
 
 namespace Lpp\Test;
 
-use Lpp\Entity\Item;
 use Lpp\Exception\SerializerWrongFormatException;
 use Lpp\Serializer\JsonSerializer;
 use Lpp\Serializer\SerializerInterface;
@@ -21,17 +20,16 @@ class JsonSerializerTest extends TestCase
     public function testDeserializeThrowingException()
     {
         $this->expectException(SerializerWrongFormatException::class);
-        $this->serializer->deserialize("", Item::class);
+        $this->serializer->deserialize("");
     }
 
     /**
      * @throws SerializerWrongFormatException
      */
-    public function testDeserializeObjectResult()
+    public function testDeserializeArrayResult()
     {
-        $result = $this->serializer->deserialize("{}", Item::class);
+        $result = $this->serializer->deserialize("{}");
 
-        var_dump($result);
-        exit;
+        $this->assertIsArray($result);
     }
 }

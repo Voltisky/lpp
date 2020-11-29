@@ -7,6 +7,7 @@
 * Prepared autoload from composer instead of src/Lpp/SplClassLoader.php
 * Started from code cleanup, change encapsulation
 * Using composer, added VarDumper (symfony/var-dumper) for better debugging variables
+* You can test starting index.php file, run "php index.php". index.php is our FrontController
 
 ## First Task
 
