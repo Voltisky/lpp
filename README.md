@@ -12,6 +12,8 @@
 
 * I've implemented Filesystem class for working with data/ directory
 * Added implementation of Serializer and Normalizer for better working with data
+* Serializer was inspired on Symfony Serializer Component (https://symfony.com/doc/current/components/serializer.html), but stuck on wrong naming fields from DataSource
+* Serializer and Normalizer was implemented in minified form
 * Normalizer got additional feature with parsing DateTime and assign to variable
 * I've added DataMapper for issue with wrong field naming which maps object instance of src/Lpp/Model to dedicated entities
 
